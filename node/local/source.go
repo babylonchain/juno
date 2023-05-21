@@ -7,12 +7,11 @@ import (
 	"reflect"
 	"unsafe"
 
+	bbnparams "github.com/babylonchain/babylon/app/params"
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/cosmos/cosmos-sdk/simapp/params"
-
 	"github.com/cosmos/cosmos-sdk/store"
-	sdk "github.com/cosmos/cosmos-sdk/types"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/viper"
 	cfg "github.com/tendermint/tendermint/config"
 	"github.com/tendermint/tendermint/libs/log"
@@ -43,7 +42,7 @@ type Source struct {
 }
 
 // NewSource returns a new Source instance
-func NewSource(home string, encodingConfig *params.EncodingConfig) (*Source, error) {
+func NewSource(home string, encodingConfig *bbnparams.EncodingConfig) (*Source, error) {
 	levelDB, err := sdk.NewLevelDB("application", path.Join(home, "data"))
 	if err != nil {
 		return nil, err
@@ -62,7 +61,7 @@ func NewSource(home string, encodingConfig *params.EncodingConfig) (*Source, err
 	return &Source{
 		StoreDB: levelDB,
 
-		Codec:       encodingConfig.Codec,
+		Codec:       encodingConfig.Marshaler,
 		LegacyAmino: encodingConfig.Amino,
 
 		BlockStore: tmstore.NewBlockStore(blockStoreDB),

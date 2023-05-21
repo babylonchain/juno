@@ -8,10 +8,9 @@ import (
 	"strings"
 	"time"
 
-	tmtypes "github.com/tendermint/tendermint/types"
-
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	tmtypes "github.com/tendermint/tendermint/types"
 	"google.golang.org/grpc"
 
 	constypes "github.com/tendermint/tendermint/consensus/types"

@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"reflect"
 
+	bbncfg "github.com/babylonchain/rpc-client/config"
+
 	"github.com/forbole/juno/v4/parser"
 
 	nodebuilder "github.com/forbole/juno/v4/node/builder"
@@ -19,7 +21,7 @@ import (
 // GetParserContext setups all the things that can be used to later parse the chain state
 func GetParserContext(cfg config.Config, parseConfig *Config) (*parser.Context, error) {
 	// Build the codec
-	encodingConfig := parseConfig.GetEncodingConfigBuilder()()
+	encodingConfig := bbncfg.GetEncodingConfig()
 
 	// Setup the SDK configuration
 	sdkConfig, sealed := getConfig()

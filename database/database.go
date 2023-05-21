@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/cosmos/cosmos-sdk/simapp/params"
+	bbnparams "github.com/babylonchain/babylon/app/params"
 
 	"github.com/forbole/juno/v4/logging"
 
@@ -71,12 +71,12 @@ type PruningDb interface {
 // Context contains the data that might be used to build a Database instance
 type Context struct {
 	Cfg            databaseconfig.Config
-	EncodingConfig *params.EncodingConfig
+	EncodingConfig *bbnparams.EncodingConfig
 	Logger         logging.Logger
 }
 
 // NewContext allows to build a new Context instance
-func NewContext(cfg databaseconfig.Config, encodingConfig *params.EncodingConfig, logger logging.Logger) *Context {
+func NewContext(cfg databaseconfig.Config, encodingConfig *bbnparams.EncodingConfig, logger logging.Logger) *Context {
 	return &Context{
 		Cfg:            cfg,
 		EncodingConfig: encodingConfig,

@@ -1,7 +1,7 @@
 package registrar
 
 import (
-	"github.com/cosmos/cosmos-sdk/simapp/params"
+	bbnparams "github.com/babylonchain/babylon/app/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/forbole/juno/v4/node"
@@ -24,7 +24,7 @@ import (
 type Context struct {
 	JunoConfig     config.Config
 	SDKConfig      *sdk.Config
-	EncodingConfig *params.EncodingConfig
+	EncodingConfig *bbnparams.EncodingConfig
 	Database       database.Database
 	Proxy          node.Node
 	Logger         logging.Logger
@@ -32,7 +32,7 @@ type Context struct {
 
 // NewContext allows to build a new Context instance
 func NewContext(
-	parsingConfig config.Config, sdkConfig *sdk.Config, encodingConfig *params.EncodingConfig,
+	parsingConfig config.Config, sdkConfig *sdk.Config, encodingConfig *bbnparams.EncodingConfig,
 	database database.Database, proxy node.Node, logger logging.Logger,
 ) Context {
 	return Context{
@@ -87,7 +87,7 @@ func NewDefaultRegistrar(parser messages.MessageAddressesParser) *DefaultRegistr
 func (r *DefaultRegistrar) BuildModules(ctx Context) modules.Modules {
 	return modules.Modules{
 		pruning.NewModule(ctx.JunoConfig, ctx.Database, ctx.Logger),
-		messages.NewModule(r.parser, ctx.EncodingConfig.Codec, ctx.Database),
+		messages.NewModule(r.parser, ctx.EncodingConfig.Marshaler, ctx.Database),
 		telemetry.NewModule(ctx.JunoConfig),
 	}
 }

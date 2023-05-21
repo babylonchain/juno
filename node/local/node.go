@@ -5,12 +5,13 @@ import (
 	"encoding/hex"
 	"fmt"
 	"os"
+	"path"
 	"sort"
-
-	"github.com/cosmos/cosmos-sdk/codec"
-	sdk "github.com/cosmos/cosmos-sdk/types"
+	"time"
 
 	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/codec"
+	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/spf13/viper"
 	cfg "github.com/tendermint/tendermint/config"
@@ -33,9 +34,6 @@ import (
 
 	"github.com/forbole/juno/v4/node"
 	"github.com/forbole/juno/v4/types"
-
-	"path"
-	"time"
 
 	constypes "github.com/tendermint/tendermint/consensus/types"
 	tmjson "github.com/tendermint/tendermint/libs/json"

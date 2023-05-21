@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/cosmos/cosmos-sdk/simapp"
+	bbncfg "github.com/babylonchain/rpc-client/config"
 
 	"github.com/forbole/juno/v4/logging"
 	"github.com/forbole/juno/v4/types/config"
@@ -63,7 +63,7 @@ func (cfg *Config) WithEncodingConfigBuilder(b EncodingConfigBuilder) *Config {
 // GetEncodingConfigBuilder returns the encoding config builder to be used
 func (cfg *Config) GetEncodingConfigBuilder() EncodingConfigBuilder {
 	if cfg.encodingConfigBuilder == nil {
-		return simapp.MakeTestEncodingConfig
+		return bbncfg.GetEncodingConfig
 	}
 	return cfg.encodingConfigBuilder
 }

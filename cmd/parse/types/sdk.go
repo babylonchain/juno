@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/cosmos/cosmos-sdk/simapp/params"
+	bbnparams "github.com/babylonchain/babylon/app/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/forbole/juno/v4/types/config"
@@ -32,4 +32,4 @@ func DefaultConfigSetup(cfg config.Config, sdkConfig *sdk.Config) {
 // -----------------------------------------------------------------
 
 // EncodingConfigBuilder represents a function that is used to return the proper encoding config.
-type EncodingConfigBuilder func() params.EncodingConfig
+type EncodingConfigBuilder func() bbnparams.EncodingConfig

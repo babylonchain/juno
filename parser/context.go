@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/cosmos/cosmos-sdk/simapp/params"
+	bbnparams "github.com/babylonchain/babylon/app/params"
 
 	"github.com/forbole/juno/v4/logging"
 	"github.com/forbole/juno/v4/node"
@@ -12,7 +12,7 @@ import (
 
 // Context represents the context that is shared among different workers
 type Context struct {
-	EncodingConfig *params.EncodingConfig
+	EncodingConfig *bbnparams.EncodingConfig
 	Node           node.Node
 	Database       database.Database
 	Logger         logging.Logger
@@ -21,7 +21,7 @@ type Context struct {
 
 // NewContext builds a new Context instance
 func NewContext(
-	encodingConfig *params.EncodingConfig, proxy node.Node, db database.Database,
+	encodingConfig *bbnparams.EncodingConfig, proxy node.Node, db database.Database,
 	logger logging.Logger, modules []modules.Module,
 ) *Context {
 	return &Context{

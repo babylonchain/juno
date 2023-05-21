@@ -43,7 +43,7 @@ type Worker struct {
 func NewWorker(ctx *Context, queue types.HeightQueue, index int) Worker {
 	return Worker{
 		index:   index,
-		codec:   ctx.EncodingConfig.Codec,
+		codec:   ctx.EncodingConfig.Marshaler,
 		node:    ctx.Node,
 		queue:   queue,
 		db:      ctx.Database,
